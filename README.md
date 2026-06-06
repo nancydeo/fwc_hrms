@@ -7,13 +7,7 @@ FWC HRMS is an AI-powered Human Resource Management System built for the FWC AI/
 ## 🚀 Setup and Run Instructions
 
 ### 1. Configure the Environment
-Create or update the `.env` file in the `server` directory:
-```env
-PORT=5001
-MONGODB_URI=your_mongodb_connection_uri
-JWT_SECRET=your_jwt_secret_key
-GEMINI_API_KEY=your_gemini_api_key
-```
+
 *Note: We run the backend on port `5001` to avoid the default macOS AirPlay Receiver port conflict on port `5000`.*
 
 ### 2. Install Dependencies
