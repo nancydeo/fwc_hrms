@@ -1,0 +1,293 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: #ffffff;
+  color: #334155;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Glass morphism mapped to elegant Zoho cards */
+.glass {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px -1px rgba(0, 0, 0, 0.05);
+}
+
+.glass-light {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #0f5fc2, #0ea5e9, #0f5fc2);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+
+  0%,
+  100% {
+    background-position: 0% center;
+  }
+
+  50% {
+    background-position: 200% center;
+  }
+}
+
+/* Glow effects */
+.glow-primary {
+  box-shadow: 0 0 20px rgba(15, 95, 194, 0.15), 0 0 60px rgba(15, 95, 194, 0.05);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+/* Card hover effect */
+.card-hover {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-hover:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border-color: rgba(15, 95, 194, 0.3);
+}
+
+/* Stat card with Zoho Blue accent line */
+.stat-card {
+  position: relative;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.03);
+}
+
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: #0f5fc2;
+  border-radius: 12px 12px 0 0;
+}
+
+/* Sidebar */
+.sidebar-link {
+  transition: all 0.2s ease;
+  position: relative;
+  border-left: 3px solid transparent;
+}
+
+.sidebar-link.active {
+  background: rgba(15, 95, 194, 0.08) !important;
+  color: #0f5fc2 !important;
+  font-weight: 600;
+  border-left-color: #0f5fc2;
+  border-radius: 0 8px 8px 0;
+}
+
+.sidebar-link:hover {
+  background: #f8fafc;
+  color: #0f5fc2;
+}
+
+/* Table rows & headers */
+.table-row {
+  transition: background 0.15s ease;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.table-row:hover {
+  background: #f8fafc;
+}
+
+table th {
+  background: #f8fafc;
+  color: #475569 !important;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+/* Input focus */
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: #0f5fc2 !important;
+  box-shadow: 0 0 0 3px rgba(15, 95, 194, 0.15) !important;
+}
+
+/* Badge & Status Styles matching screenshots */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.125rem 0.625rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.025em;
+}
+
+/* Specific Zoho-style colors for badges */
+.badge[class*="success"],
+.badge[class*="active"],
+.badge[class*="approved"],
+.badge[class*="present"],
+.badge.bg-success-500\/20 {
+  background-color: #e6f4ea !important;
+  color: #137333 !important;
+}
+
+.badge[class*="warning"],
+.badge[class*="pending"],
+.badge[class*="on_leave"],
+.badge[class*="late"],
+.badge.bg-warning-500\/20 {
+  background-color: #fef7e0 !important;
+  color: #b06000 !important;
+}
+
+.badge[class*="danger"],
+.badge[class*="rejected"],
+.badge[class*="absent"],
+.badge[class*="terminated"],
+.badge.bg-danger-400\/20 {
+  background-color: #fce8e6 !important;
+  color: #c5221f !important;
+}
+
+.badge[class*="accent"],
+.badge[class*="shortlisted"],
+.badge[class*="screening"],
+.badge.bg-accent-500\/20 {
+  background-color: #e8f0fe !important;
+  color: #1a73e8 !important;
+}
+
+/* Loading spinner */
+.spinner {
+  border: 3px solid rgba(15, 95, 194, 0.1);
+  border-top: 3px solid #0f5fc2;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Mobile sidebar overlay */
+@media (max-width: 768px) {
+  .sidebar-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 40;
+  }
+}
+
+/* Chat bubbles */
+.chat-bubble {
+  max-width: 80%;
+  padding: 0.75rem 1rem;
+  border-radius: 1rem;
+  line-height: 1.5;
+  word-wrap: break-word;
+}
+
+.chat-bubble.user {
+  background: #0f5fc2;
+  color: white;
+  border-bottom-right-radius: 0.25rem;
+  margin-left: auto;
+}
+
+.chat-bubble.bot {
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  border-bottom-left-radius: 0.25rem;
+  color: #1e293b;
+}
+
+/* Global text-white safety override for light-mode rendering */
+.text-white:not(
+  button, button *, 
+  .btn, .btn *, 
+  .badge, .badge *, 
+  .chat-bubble.user, .chat-bubble.user *,
+  [class*="bg-primary"], [class*="bg-primary"] *,
+  [class*="bg-success"], [class*="bg-success"] *,
+  [class*="bg-danger"], [class*="bg-danger"] *,
+  [class*="bg-warning"], [class*="bg-warning"] *,
+  [class*="from-primary"], [class*="from-primary"] *
+) {
+  color: #0f172a !important;
+}
