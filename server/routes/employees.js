@@ -18,12 +18,14 @@ router.get('/', protect, async (req, res) => {
         { employeeId: { $regex: search, $options: 'i' } },
       ];
     }
-    const total = await User.countDocuments(query);
-    const employees = await User.find(query)
-      .populate('department')
-      .sort({ createdAt: -1 })
-      .skip((page - 1) * limit)
-      .limit(Number(limit));
+    const [total, employees] = await Promise.all([
+      User.countDocuments(query),
+      User.find(query)
+        .populate('department')
+        .sort({ createdAt: -1 })
+        .skip((page - 1) * limit)
+        .limit(Number(limit))
+    ]);
     res.json({ employees, total, page: Number(page), pages: Math.ceil(total / limit) });
   } catch (error) {
     res.status(500).json({ message: error.message });

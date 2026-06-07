@@ -26,8 +26,8 @@ import DashboardLayout from './components/layout/DashboardLayout';
 const ProtectedRoute = ({ children, roles }) => {
   const { user, loading } = useAuth();
   if (loading) return <div className="flex items-center justify-center min-h-screen bg-dark-950"><div className="spinner" /></div>;
-  if (!user) return <Navigate to="/login" />;
-  if (roles && !roles.includes(user.role)) return <Navigate to={`/dashboard/${user.role === 'admin' ? 'admin' : user.role === 'senior_manager' ? 'manager' : user.role === 'hr_recruiter' ? 'hr' : 'employee'}`} />;
+  if (!user) return <Navigate to="/login" replace />;
+  if (roles && !roles.includes(user.role)) return <Navigate to={`/dashboard/${user.role === 'admin' ? 'admin' : user.role === 'senior_manager' ? 'manager' : user.role === 'hr_recruiter' ? 'hr' : 'employee'}`} replace />;
   return children;
 };
 
@@ -35,7 +35,7 @@ const ProtectedRoute = ({ children, roles }) => {
 const PublicRoute = ({ children }) => {
   const { user, loading, getDashboardPath } = useAuth();
   if (loading) return <div className="flex items-center justify-center min-h-screen bg-dark-950"><div className="spinner" /></div>;
-  if (user) return <Navigate to={getDashboardPath(user.role)} />;
+  if (user) return <Navigate to={getDashboardPath(user.role)} replace />;
   return children;
 };
 
