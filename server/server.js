@@ -14,7 +14,7 @@ import performanceRoutes from './routes/performance.js';
 import dashboardRoutes from './routes/dashboard.js';
 import aiRoutes from './routes/ai.js';
 
-dotenv.config();
+dotenv.config({ override: true });
 
 const app = express();
 

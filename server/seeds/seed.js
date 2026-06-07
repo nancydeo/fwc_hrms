@@ -10,7 +10,7 @@ import Application from '../models/Application.js';
 import Performance from '../models/Performance.js';
 import Payroll from '../models/Payroll.js';
 
-dotenv.config();
+dotenv.config({ override: true });
 
 const seed = async () => {
   try {

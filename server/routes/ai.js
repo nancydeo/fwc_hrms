@@ -3,13 +3,24 @@ import { GoogleGenerativeAI } from '@google/generative-ai';
 import Application from '../models/Application.js';
 import { protect } from '../middleware/auth.js';
 import dotenv from 'dotenv';
-dotenv.config();
+dotenv.config({ override: true });
 
 const router = express.Router();
 
 const getAI = () => {
   const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-  return genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
+  return {
+    generateContent: async (prompt) => {
+      try {
+        const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });
+        return await model.generateContent(prompt);
+      } catch (error) {
+        console.warn('Primary model (gemini-2.5-flash) failed, trying fallback model (gemini-2.5-flash-lite):', error.message || error);
+        const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash-lite' });
+        return await model.generateContent(prompt);
+      }
+    }
+  };
 };
 
 // POST /api/ai/screen-resume
